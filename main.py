@@ -21,9 +21,14 @@ def main():
 
     last_matches_info = get_last_matches(371887209)
 
-    for last_matches_info_data in last_matches_info:
-        print(last_matches_info_data)
-        bot.send_message(chat_id, str(last_matches_info_data), parse_mode='html')
+    if len(last_matches_info) > 0:
+        last_match_data = last_matches_info[0]  # получить информацию о последнем матче
+        print(last_match_data)
+        bot.send_message(chat_id, str(last_match_data), parse_mode='html')
+    else:
+        print("Нет информации о последних матчах.")
+        bot.send_message(chat_id, "Нет информации о последних матчах.")
+
 
 if __name__ == "__main__":
     main()
