@@ -1,10 +1,10 @@
 import requests
 import configparser
 import telebot
-from selenium import webdriver
+# from selenium import webdriver
 
 
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome()
 
 config = configparser.ConfigParser()
 config.read('config.txt')           # make config.txt:
@@ -27,8 +27,8 @@ def main():
 
     if len(last_matches_info) > 0:
         last_match_data = last_matches_info[0]
-        # print(last_match_data)
-        # bot.send_message(chat_id, str(last_match_data), parse_mode='html')
+        print(last_match_data)
+        bot.send_message(chat_id, str(last_match_data), parse_mode='html')
     else:
         print("Нет информации о последних матчах.")
         bot.send_message(chat_id, "Нет информации о последних матчах.")
@@ -36,15 +36,15 @@ def main():
     last_match_id = last_match_data['match_id']
     # last_match_id = '7118994693'
 
-    def request_detailed_info(url, match_id):
-        driver.get(f'{url}/request#{match_id}')
-        driver.implicitly_wait(10)
-        driver.quit()
-        page_source = driver.page_source
-        return page_source
-
-    requested_info = request_detailed_info(url, last_match_id)
-    print(requested_info)
+    # def request_detailed_info(url, match_id):
+    #     driver.get(f'{url}/request#{match_id}')
+    #     driver.implicitly_wait(10)
+    #     driver.quit()
+    #     page_source = driver.page_source
+    #     return page_source
+    #
+    # requested_info = request_detailed_info(url, last_match_id)
+    # print(requested_info)
 
     # def info_about_last_match(match_id):
     #     last_match_url = url + f'/matches/{match_id}/analyzed?include_analyzed=true'
